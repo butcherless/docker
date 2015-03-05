@@ -1,5 +1,3 @@
-# docker
-
 <h1>Self training with Docker virtualization</h1>
 
 <h2>Instructions:</h2>
