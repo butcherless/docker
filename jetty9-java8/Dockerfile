@@ -32,7 +32,6 @@ RUN echo "TMPDIR=/opt/jetty/temp" >> /etc/default/jetty
 RUN chown --recursive jetty:jetty /opt/jetty
 RUN chown --recursive jetty:jetty /opt/web/basedir
 
-EXPOSE 22
-EXPOSE 8080
+EXPOSE 22 8080
 
 #CMD ["service", "jetty", "start"]
