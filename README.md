@@ -5,7 +5,7 @@
 <ul>
   <li> download debian:jessie image
     <ul>
-      <li><code>sudo docker run sudo docker run debian:jessie cat /etc/os-release</code>
+      <li><code>sudo docker run debian:jessie cat /etc/os-release</code>
     </ul>
     <li> download or create <b>Dockerfile</b> debian:jessie + java:8 + maven:3.2.5 + gradle:2.3
     <ul>
