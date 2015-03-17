@@ -14,6 +14,6 @@
     </ul>
   <li>create a container mounting volume from a data only container [<i>maven_repo</i>]
     <ul>
-      <li><code>sudo docker run --rm --volumes-from maven_repo debian /bin/bash -c "ls -l /volume/maven-repo</code>"
+      <li><code>sudo docker run --rm --volumes-from maven_repo debian /bin/bash -c "ls -la /volume/maven-repo</code>"
     </ul>
 </ul>
