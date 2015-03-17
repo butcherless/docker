@@ -3,7 +3,8 @@ FROM debian/java8:latest
 
 # Jetty installation
 
-RUN wget --progress=dot:mega http://download.eclipse.org/jetty/stable-9/dist/jetty-distribution-9.2.9.v20150224.tar.gz
+RUN wget --progress=bar:force:noscroll \
+    http://download.eclipse.org/jetty/stable-9/dist/jetty-distribution-9.2.9.v20150224.tar.gz
 # COPY jetty-distribution-9.2.9.v20150224.tar.gz /jetty-distribution-9.2.9.v20150224.tar.gz
 
 RUN mkdir -p /opt/jetty
