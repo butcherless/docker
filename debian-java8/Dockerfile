@@ -17,7 +17,7 @@ RUN mkdir -p /usr/lib/jvm
 RUN tar zxvf jdk-8u40-linux-x64.tar.gz -C /usr/lib/jvm
 RUN rm -f jdk-8u40-linux-x64.tar.gz
 RUN ln -sf /usr/lib/jvm/jdk1.8.0_40/jre/bin/java /usr/bin/java
-ENV JAVA_HOME /usr/lib/jvm/jdk-8u40-linux-x64
+ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_40
 
 
 # Maven installation
