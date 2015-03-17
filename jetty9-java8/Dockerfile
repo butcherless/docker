@@ -4,15 +4,15 @@ FROM debian/java8:latest
 # Jetty installation
 
 RUN wget --progress=bar:force:noscroll \
-    http://download.eclipse.org/jetty/stable-9/dist/jetty-distribution-9.2.9.v20150224.tar.gz
+    http://download.eclipse.org/jetty/stable-9/dist/jetty-distribution-9.2.10.v20150310.tar.gz
 # COPY jetty-distribution-9.2.9.v20150224.tar.gz /jetty-distribution-9.2.9.v20150224.tar.gz
 
 RUN mkdir -p /opt/jetty
 RUN mkdir -p /opt/web/basedir
 RUN mkdir -p /opt/jetty/temp
-RUN tar zxvf jetty-distribution-9.2.9.v20150224.tar.gz -C /opt/jetty
-RUN mv /opt/jetty/jetty-distribution-9.2.9.v20150224 /opt/jetty/jetty9
-RUN rm -f jetty-distribution-9.2.9.v20150224.tar.gz
+RUN tar zxvf jetty-distribution-9.2.10.v20150310.tar.gz -C /opt/jetty
+RUN mv /opt/jetty/jetty-distribution-9.2.10.v20150310 /opt/jetty/jetty9
+RUN rm -f jetty-distribution-9.2.10.v20150310.tar.gz
 
 RUN useradd --user-group --shell /bin/false --home-dir /opt/jetty/temp jetty
 
