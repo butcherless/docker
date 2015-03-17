@@ -3,23 +3,17 @@
 <h2>Instructions:</h2>
 
 <ul>
-  <li> download ubuntu image
+  <li> download busybox image
     <ul>
-      <li><code>sudo docker run ubuntu cat /etc/os-release</code>
+      <li><code>sudo docker run --rm busybox cat /etc/os-release</code>
     </ul>
-  <li> create base image from ubuntu
+  <li>create a data only container [<i>maven_repo</i>] mounting a volume [<i>/volume/maven-repo</i>] within an image [<i>busybox</i>]
     <ul>
-      <li>https://github.com/butcherless/docker/blob/master/data-container/base-image/Dockerfile</li>
-      <li><code>sudo docker build -t ubuntu_java .</code>
-      <li><code>sudo docker run ubuntu_java id</code>
+      <li><code>sudo docker run --name maven_repo -v /volume/maven-repo busybox true</code>
+      <li><code>sudo docker ps -a | grep maven_repo</code>
     </ul>
-  <li>create a data only container [<i>maven_data</i>] mounting a volume [<i>/volume/maven</i>] within an image [<i>ubuntu_java</i>]
+  <li>create a container mounting volume from a data only container [<i>maven_repo</i>]
     <ul>
-      <li><code>sudo docker run --name maven_data -v /volume/maven ubuntu_java true</code>
-      <li><code>sudo docker ps -a | grep maven</code>
-    </ul>
-  <li>create a container mounting volume from a data only container [<i>maven_data</i>]
-    <ul>
-      <li><code>sudo docker run --rm --volumes-from maven_data ubuntu_java /bin/bash -c "ls -l /volume/maven</code>"
+      <li><code>sudo docker run --rm --volumes-from maven_repo debian /bin/bash -c "ls -l /volume/maven-repo</code>"
     </ul>
 </ul>
