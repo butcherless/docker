@@ -12,12 +12,12 @@ RUN service ssh start
 RUN wget --no-check-certificate --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
     --progress=bar:force:noscroll \
-    http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.tar.gz
+    http://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-linux-x64.tar.gz
 RUN mkdir -p /usr/lib/jvm
 RUN tar zxvf jdk-8u31-linux-x64.tar.gz -C /usr/lib/jvm
-RUN rm -f jdk-8u31-linux-x64.tar.gz
+RUN rm -f jdk-8u40-linux-x64.tar.gz
 RUN ln -sf /usr/lib/jvm/jdk1.8.0_31/jre/bin/java /usr/bin/java
-ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_31
+ENV JAVA_HOME /usr/lib/jvm/jdk-8u40-linux-x64
 
 
 # Maven installation
