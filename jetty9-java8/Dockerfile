@@ -35,4 +35,4 @@ RUN chown --recursive jetty:jetty /opt/web/basedir
 
 EXPOSE 22 8080
 
-#CMD ["service", "jetty", "start"]
+# CMD ["service jetty start && tail -f /dev/null"]
