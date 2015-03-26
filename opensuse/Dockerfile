@@ -1,9 +1,8 @@
 FROM opensuse:latest
 
-RUN zypper  --no-gpg-checks --non-interactive in tar wget
+RUN zypper --no-gpg-checks --non-interactive install less tar wget
 
 # Java SE 7
-
 RUN wget --no-check-certificate --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
     --progress=bar:force:noscroll \
@@ -33,8 +32,12 @@ RUN wget --progress=bar:force:noscroll \
  http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
 RUN mkdir /opt/tomcat7 /home/jenkins
 RUN tar zxvf apache-tomcat-7.0.59.tar.gz -C /opt/tomcat7
+COPY tomcat-users.xml /opt/tomcat7/apache-tomcat-7.0.59/conf/tomcat-users.xml
+COPY server.xml /opt/tomcat7/apache-tomcat-7.0.59/conf/server.xml
 RUN rm -rf apache-tomcat-7.0.59.tar.gz
 RUN cp jenkins.war /opt/tomcat7/apache-tomcat-7.0.59/webapps
 RUN groupadd efxci
 RUN useradd jenkins -g efxci
 RUN chown -R jenkins:efxci /opt/tomcat7 /home/jenkins
+
+USER jenkins
