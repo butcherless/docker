@@ -1,5 +1,7 @@
 FROM opensuse/base
 
+# sudo docker build -t opensuse/jenkins .
+
 # Java SE 7
 RUN wget --no-check-certificate --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
