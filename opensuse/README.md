@@ -22,7 +22,7 @@
 
 <ul>
 <li>Change to image base dir:
-<code>cd $GIT_PROJECT_HOME/opensuse/jenkinse</code>
+<code>cd $GIT_PROJECT_HOME/opensuse/jenkins</code>
 
 <li>Image Dockerfile:
 <code>https://github.com/butcherless/docker/blob/master/opensuse/jenkins/Dockerfile</code>
