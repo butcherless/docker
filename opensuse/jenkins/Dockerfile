@@ -36,7 +36,7 @@ COPY tomcat-users.xml /opt/tomcat7/apache-tomcat-7.0.59/conf/tomcat-users.xml
 COPY server.xml /opt/tomcat7/apache-tomcat-7.0.59/conf/server.xml
 RUN rm -rf apache-tomcat-7.0.59.tar.gz
 RUN cp jenkins.war /opt/tomcat7/apache-tomcat-7.0.59/webapps
-RUN useradd --base-dir /home/jenkins --create-home --user-group --home-dir /home/jenkins jenkins
+RUN useradd --base-dir /home/jenkins --user-group --home-dir /home/jenkins jenkins
 RUN chown -R jenkins:jenkins /opt/tomcat7 /home/jenkins /var/jenkins
 ENV JENKINS_HOME /var/jenkins
 
