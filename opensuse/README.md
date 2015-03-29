@@ -1,8 +1,7 @@
-Create a base image from <b>opensuse</b> latest version. This image contains OS updates and commands required for the project needs.
-<br/>
+<p>- Create a base image from <b>opensuse</b> latest version. This image contains OS updates and commands required for the project needs.</p>
 
 <ul>
-<li>Change to base dir:
+<li>Change to image base dir:
 <code>cd $GIT_PROJECT_HOME/opensuse/base-image</code>
 
 <li>Image Dockerfile:
@@ -16,4 +15,25 @@ Create a base image from <b>opensuse</b> latest version. This image contains OS 
 
 <li>Run test container:
 <code>sudo docker run --rm opensuse/base cat /etc/os-release</code>
+</ul>
+<br/>
+
+<p>- Create a <b>Jenkins/Tomcat/Java SE 7</b> image from previous opensuse base image.</p>
+
+<ul>
+<li>Change to image base dir:
+<code>cd $GIT_PROJECT_HOME/opensuse/jenkinse</code>
+
+<li>Image Dockerfile:
+<code>https://github.com/butcherless/docker/blob/master/opensuse/jenkins/Dockerfile</code>
+
+<li>Build image:
+<code>sudo docker build -t opensuse/jenkins .</code>
+
+<li>Verify image:
+<code>sudo docker images</code>
+
+<li>Run test container:
+<code>sudo docker run --rm opensuse/jenkins cat /etc/os-release</code>
+
 </ul>
