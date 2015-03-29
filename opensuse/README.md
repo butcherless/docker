@@ -58,6 +58,7 @@
 <code>sudo docker images</code>
 
 </ul>
+<br/>
 
 
 <p>- Create a <b>data only container</b> image from previous opensuse base image.</p>
@@ -70,6 +71,7 @@
 <code>sudo docker ps -a</code>
 
 </ul>
+<br/>
 
 
 <p>- Run the Jenkins container using the previous <b>data only container</b> volume.</p>
