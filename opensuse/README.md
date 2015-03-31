@@ -77,7 +77,10 @@
 <p>- Run the Jenkins container using the previous <b>data only container</b> volume.</p>
 <ul>
 
-<li>Run the container within the previous volume
-<code>sudo docker run --volumes-from jenkins-data-only --rm -p 8080:8080  -it opensuse/jenkins /bin/bash</code>
+<li>Run the container in interactive mode within the previous volume
+<code>sudo docker run --volumes-from jenkins-data-only --rm -p 8080:8080 -it opensuse/jenkins /bin/bash</code>
+
+<li>Run the container in background mode within the previous volume
+<code>sudo docker run -d --volumes-from jenkins-data-only --name jenkins-server -p 8080:8080 opensuse/jenkins</code>
 
 </ul>
