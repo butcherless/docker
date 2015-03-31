@@ -1,4 +1,4 @@
-FROM debian/jenkins
+FROM debian/java8
 
 # sudo docker build -t debian/jenkins .
 
