@@ -32,6 +32,7 @@ RUN wget --progress=bar:force:noscroll \
  http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
 RUN mkdir /opt/tomcat7 /home/jenkins /var/jenkins
 RUN tar zxvf apache-tomcat-7.0.59.tar.gz -C /opt/tomcat7
+COPY jenkins /etc/init.d/jenkins
 COPY tomcat-users.xml /opt/tomcat7/apache-tomcat-7.0.59/conf/tomcat-users.xml
 COPY server.xml /opt/tomcat7/apache-tomcat-7.0.59/conf/server.xml
 RUN rm -rf apache-tomcat-7.0.59.tar.gz
@@ -45,3 +46,6 @@ ENV HOME /home/jenkins
 WORKDIR /home/jenkins 
 RUN ln -s /opt/tomcat7/apache-tomcat-7.0.59/bin/startup.sh $HOME/startup.sh
 RUN ln -s /opt/tomcat7/apache-tomcat-7.0.59/bin/shutdown.sh
+
+USER root
+CMD service jenkins start && tail -f /dev/null
