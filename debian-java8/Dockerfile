@@ -1,5 +1,7 @@
 FROM debian:jessie
 
+# sudo docker build -t debian/java8 .
+
 RUN echo "root:admin" | chpasswd
 
 RUN apt-get update && apt-get upgrade -y
@@ -20,15 +22,14 @@ RUN ln -sf /usr/lib/jvm/jdk1.8.0_40/jre/bin/java /usr/bin/java
 ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_40
 
 
-# Maven installation
-
-RUN wget --progress=bar:force:noscroll \
-    http://www.eu.apache.org/dist/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
+# Apache Maven 3.3.1
+RUN wget --progress=bar:force:noscroll \ 
+ http://www.eu.apache.org/dist/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz
 RUN mkdir -p /usr/share/maven3
-RUN tar zxvf apache-maven-3.2.5-bin.tar.gz -C /usr/share/maven3
-RUN rm -f apache-maven-3.2.5-bin.tar.gz
-RUN ln -sf /usr/share/maven3/apache-maven-3.2.5/bin/mvn /usr/bin/mvn
-ENV M2_HOME /usr/share/maven3/apache-maven-3.2.5
+RUN tar zxvf apache-maven-3.3.1-bin.tar.gz -C /usr/share/maven3
+RUN rm -f apache-maven-3.3.1-bin.tar.gz
+RUN ln -sf /usr/share/maven3/apache-maven-3.3.1/bin/mvn /usr/bin/mvn
+ENV M2_HOME /usr/share/maven3/apache-maven-3.3.1
 
 
 # Gradle installation
