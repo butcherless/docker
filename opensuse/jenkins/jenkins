@@ -6,7 +6,7 @@
 JENKINS_USER=jenkins
 export JAVA_HOME=/opt/oracle/jdk1.7.0_75
 CATALINA_HOME=/opt/tomcat7/apache-tomcat-7.0.59
-export JENKINS_HOME=/home/jenkins
+export JENKINS_HOME=/var/jenkins
  
 case $1 in
    start)
