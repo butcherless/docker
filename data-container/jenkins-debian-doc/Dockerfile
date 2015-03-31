@@ -1,4 +1,4 @@
-FROM debian:latest 
+FROM debian:jessie 
 
 # sudo docker build -t debian/data-only .
 
