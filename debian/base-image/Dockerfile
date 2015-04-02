@@ -1,9 +1,8 @@
-FROM debian:jessie
+FROM ubuntu:14.04.2
 
-# sudo docker build -t debian/base .
+# sudo docker build -t ubuntu/base .
 
-#RUN echo "root:admin" | chpasswd
+RUN echo "root:admin" | chpasswd
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y curl git htop less lynx openssh-server openssh-client vim wget zip
-RUN service ssh start
