@@ -1,6 +1,6 @@
-FROM debian/base
+FROM ubuntu/base
 
-# sudo docker build -t debian/java8 .
+# sudo docker build -t ubuntu/java8 .
 
 
 # Java 8 installation
