@@ -1,24 +1,52 @@
-#!/bin/bash
-# description: Jenkins Server Start Stop Restart
+#!/bin/sh
+#
+# Startup script for the Jenkins Continuous Integration server
+# (via Jakarta Tomcat Java Servlets and JSP server)
+#
+# chkconfig: - 85 15
+# description: Jakarta Tomcat Java Servlets and JSP server
 # processname: jenkins
-# chkconfig: 345 20 80
+# pidfile: /home/jenkins/jenkins-tomcat.pid
 
+# Set Tomcat environment.
 JENKINS_USER=jenkins
+LOCKFILE=/var/lock/jenkins
+export HOME=/home/jenkins
 export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_40
-CATALINA_HOME=/usr/share/tomcat7/apache-tomcat-7.0.59
-export JENKINS_HOME=/var/jenkins
- 
-case $1 in
-   start)
-   su $JENKINS_USER -c $CATALINA_HOME/bin/startup.sh
-   ;;
-   stop)
-   su $JENKINS_USER -c $CATALINA_HOME/bin/shutdown.sh
-   ;;
-   restart)
-   su $JENKINS_USER -c $CATALINA_HOME/bin/shutdown.sh
-   su $JENKINS_USE$JENKINS_USER -c $CATALINA_HOME/bin/startup.sh
-   ;;
+export JENKINS_BASEDIR=/home/jenkins
+export TOMCAT_HOME=/usr/share/tomcat7/apache-tomcat-7.0.59
+export CATALINA_PID=$JENKINS_BASEDIR/jenkins-tomcat.pid
+export CATALINA_OPTS="-DJENKINS_HOME=$JENKINS_BASEDIR/jenkins-home -Xmx512m -Djava.awt.headless=true"
+
+# Source function library.
+#. /etc/rc.d/init.d/functions
+
+[ -f $TOMCAT_HOME/bin/catalina.sh ] || exit 0
+
+case "$1" in
+  start)
+        # Start daemon.
+        echo -n "Starting Tomcat: "
+        su -p -s /bin/sh $JENKINS_USER -c "$TOMCAT_HOME/bin/catalina.sh start"
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ] && touch $LOCKFILE
+        ;;
+  stop)
+        # Stop daemons.
+        echo -n "Shutting down Tomcat: "
+        su -p -s /bin/sh $JENKINS_USER -c "$TOMCAT_HOME/bin/catalina.sh stop"
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ] && rm -f $LOCKFILE
+        ;;
+  restart)
+        $0 stop
+        $0 start
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
 esac
 
 exit 0

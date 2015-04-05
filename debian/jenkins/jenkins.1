@@ -1,0 +1,24 @@
+#!/bin/bash
+# description: Jenkins Server Start Stop Restart
+# processname: jenkins
+# chkconfig: 345 20 80
+
+JENKINS_USER=jenkins
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_40
+CATALINA_HOME=/usr/share/tomcat7/apache-tomcat-7.0.59
+export JENKINS_HOME=/var/jenkins
+ 
+case $1 in
+   start)
+   su $JENKINS_USER -c $CATALINA_HOME/bin/startup.sh
+   ;;
+   stop)
+   su $JENKINS_USER -c $CATALINA_HOME/bin/shutdown.sh
+   ;;
+   restart)
+   su $JENKINS_USER -c $CATALINA_HOME/bin/shutdown.sh
+   su $JENKINS_USE$JENKINS_USER -c $CATALINA_HOME/bin/startup.sh
+   ;;
+esac
+
+exit 0
