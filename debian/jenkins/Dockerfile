@@ -4,13 +4,13 @@ FROM ubuntu/java8
 
 
 # Jenkins
-RUN wget --progress=bar:force:noscroll \
- http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+RUN wget --progress=dot:giga \
+    http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 
 
 # Tomcat 7
-RUN wget --progress=bar:force:noscroll \
- http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
+RUN wget --progress=dot:giga \
+    http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
 RUN mkdir /usr/share/tomcat7 /home/jenkins
 RUN tar zxvf apache-tomcat-7.0.59.tar.gz -C /usr/share/tomcat7
 RUN rm -rf apache-tomcat-7.0.59.tar.gz
