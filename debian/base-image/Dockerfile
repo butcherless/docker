@@ -2,7 +2,21 @@ FROM ubuntu:14.04.2
 
 # sudo docker build -t ubuntu/base .
 
-RUN echo "root:admin" | chpasswd
-
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y curl git htop less lynx openssh-server openssh-client vim wget zip
+RUN apt-get install -y curl git htop less lynx nmap openssh-client openssh-server vim wget zip
+
+# optional
+#RUN echo 'root:admin' | chpasswd
+
+RUN mkdir /var/run/sshd
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+RUN mkdir -p /root/.ssh
+COPY mykey.pub /root/.ssh/authorized_keys
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
