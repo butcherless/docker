@@ -4,8 +4,8 @@
 # chkconfig: 345 20 80
 
 JENKINS_USER=jenkins
-export JAVA_HOME=/opt/oracle/jdk1.7.0_75
-CATALINA_HOME=/opt/tomcat7/apache-tomcat-7.0.59
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_40
+CATALINA_HOME=/usr/share/tomcat7/apache-tomcat-7.0.59
 export JENKINS_HOME=/var/jenkins
  
 case $1 in

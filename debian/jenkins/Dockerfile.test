@@ -1,0 +1,13 @@
+FROM ubuntu/java8
+
+# sudo docker build -t ubuntu/jenkins .
+
+RUN mkdir /var/jenkins
+
+RUN useradd --base-dir /home/jenkins --user-group --home-dir /home/jenkins --create-home jenkins
+RUN chown -R jenkins:jenkins /home/jenkins /var/jenkins
+
+VOLUME /var/jenkins
+
+USER jenkins
+CMD date >> /var/jenkins/date.log && cat /var/jenkins/date.log
