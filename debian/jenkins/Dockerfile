@@ -20,6 +20,9 @@ COPY server.xml /usr/share/tomcat7/apache-tomcat-7.0.59/conf/server.xml
 RUN useradd --base-dir /home/jenkins --user-group --home-dir /home/jenkins jenkins
 RUN chown -R jenkins:jenkins /usr/share/tomcat7 /home/jenkins
 ENV JENKINS_HOME /var/jenkins
+RUN mkdir -p /var/jenkins
+RUN chown -R jenkins:jenkins /var/jenkins
+VOLUME /var/jenkins
 
 COPY jenkins /etc/init.d/jenkins
 RUN chmod 755 /etc/init.d/jenkins
