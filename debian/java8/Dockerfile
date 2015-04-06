@@ -7,7 +7,7 @@ FROM ubuntu/base
  
 RUN wget --no-check-certificate --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    --progress=bar:force:noscroll \
+    --progress=dot:giga \
     http://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-linux-x64.tar.gz
 RUN mkdir -p /usr/lib/jvm
 RUN tar zxvf jdk-8u40-linux-x64.tar.gz -C /usr/lib/jvm
@@ -17,7 +17,7 @@ ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_40
 
 
 # Apache Maven 3.3.1
-RUN wget --progress=bar:force:noscroll \ 
+RUN wget --progress=dot:giga \ 
  http://www.eu.apache.org/dist/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz
 RUN mkdir -p /usr/share/maven3
 RUN tar zxvf apache-maven-3.3.1-bin.tar.gz -C /usr/share/maven3
@@ -28,7 +28,7 @@ ENV M2_HOME /usr/share/maven3/apache-maven-3.3.1
 
 # Gradle installation
 
-RUN wget --progress=bar:force \
+RUN wget --progress=dot:giga \
     https://services.gradle.org/distributions/gradle-2.3-all.zip
 RUN mkdir -p /usr/share/gradle
 RUN unzip gradle-2.3-all.zip -d /usr/share/gradle
