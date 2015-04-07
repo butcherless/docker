@@ -24,6 +24,7 @@ RUN mkdir -p /var/jenkins
 RUN chown -R jenkins:jenkins /var/jenkins
 VOLUME /var/jenkins
 
+RUN echo "building image..."
 COPY jenkins /etc/init.d/jenkins
 RUN chmod 755 /etc/init.d/jenkins
 RUN update-rc.d jenkins defaults

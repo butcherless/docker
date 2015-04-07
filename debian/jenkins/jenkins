@@ -1,12 +1,18 @@
 #!/bin/sh
 #
-# Startup script for the Jenkins Continuous Integration server
-# (via Jakarta Tomcat Java Servlets and JSP server)
-#
-# chkconfig: - 85 15
-# description: Jakarta Tomcat Java Servlets and JSP server
-# processname: jenkins
-# pidfile: /home/jenkins/jenkins-tomcat.pid
+### BEGIN INIT INFO
+# Provides:          jenkins
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Jakarta Tomcat Java Servlets and JSP server.
+# Description:       # Startup script for the Jenkins Continuous Integration server
+#                      (via Jakarta Tomcat Java Servlets and JSP server)
+
+
+
+### END INIT INFO
 
 # Set Tomcat environment.
 JENKINS_USER=jenkins
@@ -44,8 +50,11 @@ case "$1" in
         $0 stop
         $0 start
         ;;
-  *)
-        echo "Usage: $0 {start|stop|restart|status}"
+   status)
+        status -p $CATALINA_PID -l $(basename $LOCKFILE) jenkins
+        ;;
+ *)
+        echo "Usage: $0 {start|stop|restart}"
         exit 1
 esac
 
