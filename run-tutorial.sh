@@ -40,7 +40,7 @@ sudo docker port mysshd 22
 chmod 400 mykey
 sudo docker exec mysshd hostname
 
-pause "after press enter you can type some commands and finally, press CTRL+D o type exit"
+pause "after press the enter key, you can type some commands (hostname, id, df -h). Finally, press CTRL+D o type exit"
 ssh -i mykey root@localhost -p 2222 -oStrictHostKeyChecking=no
 
 echo -e "\nstopping container 'mysshd'..."
@@ -48,12 +48,11 @@ sudo docker stop mysshd
 echo -e "\nremoving container 'mysshd'..."
 sudo docker rm mysshd
 
-pause "end base image step!"
+pause "end base image step! ${PRESS_ENTER_MSG}"
+
 
 # Java 8 image
 clear
-
-echo -e "\nbuilding ubuntu java 8 image..."
 
 cd ../java8
 echo -e "\ncurrent dir: `pwd`"
@@ -76,13 +75,46 @@ echo -e "\nchecking gradle installation..."
 sleep 1
 sudo docker run --rm ubuntu/java8 gradle -v
 
-pause "end java 8 image step!"
+pause "end java 8 image step! ${PRESS_ENTER_MSG}"
 
-# Java 8 image
+# Jenkins image
 clear
 
-echo -e "\nbuilding ubuntu jenkins image..."
-
-
 cd ../jenkins
+echo -e "\ncurrent dir: `pwd`"
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nbuilding ubuntu jenkins image..."
+sleep 1
 sudo docker build -t ubuntu/jenkins .
+
+echo -e "\nchecking jenkins image..."
+sleep 1
+sudo docker images | grep jenkins
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nstarting jenkins container..."
+sleep 1
+sudo docker run -d --name jenkins -p 8090:8080 ubuntu/jenkins
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nchecking jenkins container..."
+sleep 1
+sudo docker ps -a
+pause ${PRESS_ENTER_MSG}
+
+echo -e "go to tomcat homepage: http://localhost:8090"
+pause ${PRESS_ENTER_MSG}
+
+echo -e "go to jenkins hombepage: http://localhost:8090/jenkins"
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nstopping container 'jenkins'..."
+sudo docker stop jenkins
+echo -e "\nremoving container 'jenkins'..."
+sudo docker rm jenkins
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nchecking containers..."
+sleep 1
+sudo docker ps -a

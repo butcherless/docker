@@ -20,7 +20,7 @@ LOCKFILE=/var/lock/jenkins
 export HOME=/home/jenkins
 export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_40
 export JENKINS_BASEDIR=/home/jenkins
-export TOMCAT_HOME=/usr/share/tomcat7/apache-tomcat-7.0.59
+export TOMCAT_HOME=/usr/share/tomcat7/apache-tomcat-7.0.61
 export CATALINA_PID=$JENKINS_BASEDIR/jenkins-tomcat.pid
 export CATALINA_OPTS="-DJENKINS_HOME=$JENKINS_BASEDIR/jenkins-home -Xmx512m -Djava.awt.headless=true"
 
