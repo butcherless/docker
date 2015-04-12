@@ -10,13 +10,13 @@ RUN wget --progress=dot:giga \
 
 # Tomcat 7
 RUN wget --progress=dot:giga \
-    http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
+    http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.tar.gz
 RUN mkdir /usr/share/tomcat7 /home/jenkins
-RUN tar zxvf apache-tomcat-7.0.59.tar.gz -C /usr/share/tomcat7
-RUN rm -rf apache-tomcat-7.0.59.tar.gz
-RUN mv jenkins.war /usr/share/tomcat7/apache-tomcat-7.0.59/webapps
-COPY tomcat-users.xml /usr/share/tomcat7/apache-tomcat-7.0.59/conf/tomcat-users.xml
-COPY server.xml /usr/share/tomcat7/apache-tomcat-7.0.59/conf/server.xml
+RUN tar zxvf apache-tomcat-7.0.61.tar.gz -C /usr/share/tomcat7
+RUN rm -rf apache-tomcat-7.0.61.tar.gz
+RUN mv jenkins.war /usr/share/tomcat7/apache-tomcat-7.0.61/webapps
+COPY tomcat-users.xml /usr/share/tomcat7/apache-tomcat-7.0.61/conf/tomcat-users.xml
+COPY server.xml /usr/share/tomcat7/apache-tomcat-7.0.61/conf/server.xml
 RUN useradd --base-dir /home/jenkins --user-group --home-dir /home/jenkins jenkins
 RUN chown -R jenkins:jenkins /usr/share/tomcat7 /home/jenkins
 ENV JENKINS_HOME /var/jenkins
