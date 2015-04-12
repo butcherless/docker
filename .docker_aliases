@@ -1,0 +1,8 @@
+# docker aliases
+
+alias dkrmdi='sudo docker rmi $(sudo docker images -qf dangling=true)'
+alias dklsi='sudo docker images'
+alias dklsc='sudo docker ps -a'
+alias dkrmc='sudo docker rm'
+alias dkrmcs='sudo docker rm $(dklsc -q)'
+alias dkrc='sudo docker run --rm'
