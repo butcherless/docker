@@ -8,39 +8,36 @@ pause() {
 }
 
 clear
-
-# rm -rf /tmp/docker-tutorial
-# mkdir /tmp/docker-tutorial
-# cd /tmp/docker-tutorial
-
-echo -e "cloning git repo..."
-# git clone https://github.com/butcherless/docker
-# cd docker
-
-cd ubuntu/base-image
-echo -e "\ncurrent dir: `pwd`"
+echo -e "checking docker version...\n"
+sudo docker version
 pause ${PRESS_ENTER_MSG}
 
-echo -e "\nlisting ubuntu images..."
-sleep 1
 
+clear
+cd ubuntu/base-image
+echo -e "current dir: `pwd`"
+echo -e "\nlisting ubuntu images...\n"
 sudo docker images | grep ubuntu
 pause ${PRESS_ENTER_MSG}
 
 
 # sudo docker rmi ubuntu/base
-
-echo -e "\nbuilding ubuntu base image..."
-
+clear
+echo -e "building ubuntu base image...\n"
 sudo docker build -t ubuntu/base .
+pause "ubuntu base image built, ${PRESS_ENTER_MSG}"
+
+clear
+echo -e "login into ubuntu base container via ssh client...\n"
 ssh-keygen -qf "/home/cmartin/.ssh/known_hosts" -R [localhost]:2222
 sudo docker run -d -p 2222:22 --name mysshd -h ssh-server ubuntu/base
 sudo docker ps -a
 sudo docker port mysshd 22
 chmod 400 mykey
 sudo docker exec mysshd hostname
-
 pause "after press the enter key, you can type some commands (hostname, id, df -h). Finally, press CTRL+D o type exit"
+
+clear
 ssh -i mykey root@localhost -p 2222 -oStrictHostKeyChecking=no
 
 echo -e "\nstopping container 'mysshd'..."
@@ -55,7 +52,7 @@ pause "end base image step! ${PRESS_ENTER_MSG}"
 clear
 
 cd ../java8
-echo -e "\ncurrent dir: `pwd`"
+echo -e "current dir: `pwd`"
 pause ${PRESS_ENTER_MSG}
 
 echo -e "\nbuilding ubuntu java 8 image..."
@@ -77,11 +74,12 @@ sudo docker run --rm ubuntu/java8 gradle -v
 
 pause "end java 8 image step! ${PRESS_ENTER_MSG}"
 
+
 # Jenkins image
 clear
 
 cd ../jenkins
-echo -e "\ncurrent dir: `pwd`"
+echo -e "current dir: `pwd`"
 pause ${PRESS_ENTER_MSG}
 
 echo -e "\nbuilding ubuntu jenkins image..."
@@ -118,3 +116,46 @@ pause ${PRESS_ENTER_MSG}
 echo -e "\nchecking containers..."
 sleep 1
 sudo docker ps -a
+pause ${PRESS_ENTER_MSG}
+
+
+
+# Nexus image
+clear
+
+cd ../nexus
+echo -e "current dir: `pwd`"
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nbuilding ubuntu nexus image..."
+sleep 1
+sudo docker build -t ubuntu/nexus .
+
+echo -e "\nchecking nexus image..."
+sleep 1
+sudo docker images | grep nexus
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nstarting nexus container..."
+sleep 1
+sudo docker run -d --name nexus -p 8091:8081 ubuntu/nexus
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nchecking nexus container..."
+sleep 1
+sudo docker ps -a
+pause ${PRESS_ENTER_MSG}
+
+echo -e "go to nexus homepage: http://localhost:8091/nexus (this may take a few seconds)"
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nstopping container 'nexus'..."
+sudo docker stop nexus
+echo -e "\nremoving container 'nexus'..."
+sudo docker rm nexus
+pause ${PRESS_ENTER_MSG}
+
+echo -e "\nchecking containers..."
+sleep 1
+sudo docker ps -a
+pause ${PRESS_ENTER_MSG}
