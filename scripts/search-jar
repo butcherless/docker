@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# searches for a string in a set of jar files under a path
+# default path is the working dir
+
+GREP_OPTIONS="--color=always"
+GREEN='\e[1;32m'
+NO_COLOUR="\033[0m"
+
+# check if jar command exists
+
+if [ ! -e /usr/bin/jar ]; then
+  echo "jar command does not exist"
+  exit 1
+fi
+
+if [ -z "$1" ]; then
+  echo "usage: search-jar [path] string"
+  exit 1
+fi
+
+#echo "parameter count >= 1"
+
+if [ -z "$2" ]; then
+  #echo "param count = 1"
+  FIND_PATH=$PWD
+  STRING="$1"
+else
+  #echo "param count = 2"
+  FIND_PATH="$1"
+  STRING="$2"
+fi
+
+if [ ! -d $FIND_PATH ]; then
+  echo "$1 is not a valid path"
+  exit 1
+fi
+
+#echo "find path: $FIND_PATH  -  string: $STRING"
+
+for i in $(find $FIND_PATH -type f -name "*.jar")
+do
+  RESULT=`jar tvf $i | grep -c $STRING`
+    if [ $RESULT -gt 0 ]; then
+      echo -e "file: ${GREEN}${i}${NO_COLOUR} ($RESULT)"
+      jar tvf $i | grep $GREP_OPTIONS $STRING
+      echo
+    fi
+done
+

@@ -1,0 +1,40 @@
+#!/bin/bash
+# TODO permitir buscar en todos los archivos suministrando solamente la cadena
+
+# nombres de archivo con espacios
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+GREEN='\e[1;32m'
+NO_COLOUR="\033[0m"
+
+if [ -z "$1" ]
+then
+  echo "usage: search-text string extension"
+  exit 1
+fi
+
+if [ -z "$2" ]
+then
+  echo "usage: search-text string extension"
+  exit 1
+fi
+
+STRING=$1
+EXT=$2
+
+echo "searching [$STRING] string in [*.$EXT] files..."
+echo
+
+for i in `find . -type f -name "*.$EXT"`;
+do
+  # count occurrences
+  COUNT=`grep -c $STRING ${i}`;
+  if [ $COUNT -gt 0 ]; then
+    echo -e "file: ${GREEN}${i}${NO_COLOUR} <----";
+    # display ocurrence line number
+    grep -n $STRING $i;
+    echo
+  fi
+done
+
+IFS=$SAVEIFS
