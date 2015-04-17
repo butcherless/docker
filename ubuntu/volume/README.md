@@ -1,4 +1,4 @@
-<p>Instructions:</p>
+Instructions:
 <br/>
 - create image from: this <a href="Dockerfile">Dockerfile</a>
 <br/>
