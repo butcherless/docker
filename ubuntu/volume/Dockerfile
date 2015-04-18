@@ -11,3 +11,4 @@ USER jenkins
 CMD ls -l /jenkins-home && \
     date >> /jenkins-home/date.log && \
     cat /jenkins-home/date.log
+
