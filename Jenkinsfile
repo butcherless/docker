@@ -7,6 +7,7 @@ pipeline {
             steps {
               script {
                 myVar = "var-value"
+                sh 'echo ${myVar}'
               }
             }
         }
