@@ -7,7 +7,6 @@ pipeline {
             steps {
               script {
                 myVar = "var-value"
-                sh 'echo ${myVar}'
               }
             }
         }
@@ -17,7 +16,8 @@ pipeline {
                 #!/bin/bash
                 echo "hello world!"
                 echo ${USER}
-                '''
+                echo 
+                ''' + ${myVar}
             }
         }
     }
