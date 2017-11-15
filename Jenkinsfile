@@ -17,7 +17,7 @@ pipeline {
                 echo "hello world!"
                 echo ${USER}
                 echo 
-                ''' + ${myVar}
+                ''' ${myVar}
             }
         }
     }
