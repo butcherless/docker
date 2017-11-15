@@ -16,7 +16,7 @@ pipeline {
                 #!/bin/bash
                 echo "hello world!"
                 echo ${USER}
-                echo "${env.myVar}"
+                echo ${myVar}
                 '''
             }
         }
