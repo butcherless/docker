@@ -17,6 +17,7 @@ pipeline {
                 echo "hello world!"
                 echo ${USER}
                 echo ${myVar}
+                env | grep myVar
                 '''
             }
         }
