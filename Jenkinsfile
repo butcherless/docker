@@ -12,6 +12,7 @@ pipeline {
         }
         stage("deploy") {
             steps {
+                echo ${myVar}
                 sh '''
                 #!/bin/bash
                 echo "hello world!"
