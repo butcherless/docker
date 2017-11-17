@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Application {
-    static final String VERSION = Greeting.class.getSimpleName() + ":v2";
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

@@ -1,6 +1,8 @@
 package hello;
 
-public class Greeting {
+import java.io.Serializable;
+
+public class Greeting implements Serializable {
 
     private final Long id;
     private final String content;
