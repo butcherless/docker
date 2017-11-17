@@ -1,0 +1,24 @@
+#!/bin/bash
+
+rm -f spring-boot/*.jar
+
+echo "assembling v1"
+gs-rest-service-v1/gradlew -b gs-rest-service-v1/build.gradle clean assemble
+cp gs-rest-service-v1/build/libs/boot-service-v1-1.0.0.jar spring-boot/boot-service-v1-1.0.0.jar
+echo
+echo "deleting v1 image"
+docker rmi alpine-jre8-boot-v1
+echo
+echo "building v1 image"
+docker build -t alpine-jre8-boot-v1 -f spring-boot/Dockerfile-v1 spring-boot
+
+echo
+echo "assembling v2"
+gs-rest-service-v2/gradlew -b gs-rest-service-v2/build.gradle clean assemble
+cp gs-rest-service-v2/build/libs/boot-service-v2-1.0.0.jar spring-boot/boot-service-v2-1.0.0.jar
+echo
+echo "deleting v2 image"
+docker rmi alpine-jre8-boot-v2
+echo
+echo "building v2 image"
+docker build -t alpine-jre8-boot-v2 -f spring-boot/Dockerfile-v2 spring-boot

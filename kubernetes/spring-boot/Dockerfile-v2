@@ -1,0 +1,10 @@
+# build:  docker build -t alpine-jre8-boot-v2 -f Dockerfile-v2 .
+# verify: docker run -ti --rm -p 8080:8080 alpine-jre8-boot-v2
+
+FROM alpine-jre8
+
+# git clone https://github.com/spring-guides/gs-spring-boot.git
+
+COPY boot-service-v2-1.0.0.jar /boot-service-v2.jar
+EXPOSE 8080/tcp
+ENTRYPOINT ["java", "-jar", "/boot-service-v2.jar"]
