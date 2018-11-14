@@ -13,10 +13,12 @@ Carlos Martín
  chmod u+x run-tutorial.sh
  ./run-tutorial.sh
 
-== Top 10 docker run command options
+== Links
+
+.Top 10 docker run command options
 
 * https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1
 
-== Docker Commands — The Ultimate Cheat Sheet
+.Docker Commands — The Ultimate Cheat Sheet
 
 * https://hackernoon.com/docker-commands-the-ultimate-cheat-sheet-994ac78e2888
