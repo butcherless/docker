@@ -8,3 +8,7 @@
   <li><code>chmod u+x run-tutorial.sh</code>
   <li><code>./run-tutorial.sh</code>
 </ul>
+
+<h2>Top 10 docker run command options</h2>
+
+https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1
