@@ -22,3 +22,7 @@ Carlos Martín
 .Docker Commands — The Ultimate Cheat Sheet
 
 * https://hackernoon.com/docker-commands-the-ultimate-cheat-sheet-994ac78e2888
+
+. Amazon Correto
+
+* https://dzone.com/articles/amazon-corretto-another-jdk?utm_source=Top%205&utm_medium=email&utm_campaign=Top%205%202019-01-113
