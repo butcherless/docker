@@ -26,3 +26,8 @@ Carlos Martín
 .Amazon Correto
 
 * https://dzone.com/articles/amazon-corretto-another-jdk?utm_source=Top%205&utm_medium=email&utm_campaign=Top%205%202019-01-113
+
+== Test checkbox
+
+-[ ] task 1
+-[ ] task 2
