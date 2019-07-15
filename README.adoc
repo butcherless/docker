@@ -30,4 +30,5 @@ Carlos Martín
 == Test checkbox
 
 -[ ] task 1
+
 -[ ] task 2
