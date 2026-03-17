@@ -20,6 +20,10 @@
 - primera versión del tipo de laptop
 - venta del MacBook Air segunda mano para recuperar dinero
 
+## Comparar Neo con Air
+
+https://www.apple.com/es/mac/compare/
+
 
 | Cantidad | 4 años (48 meses) | 5 años (60 meses) | 6 años (72 meses) | 7 años (84 meses) |
 | -------- | ----------------- | ----------------- | ----------------- | ----------------- |
