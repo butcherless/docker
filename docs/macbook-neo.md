@@ -16,6 +16,9 @@
 - procesador mono proceso
 - 1 USB C limitado (usb-2)
 - Rendimiento A18 Pro / M5
+- limitación temporal prolongada para la arquitectura
+- primera versión del tipo de laptop
+- venta del MacBook Air segunda mano para recuperar dinero
 
 
 | Cantidad | 4 años (48 meses) | 5 años (60 meses) | 6 años (72 meses) | 7 años (84 meses) |
